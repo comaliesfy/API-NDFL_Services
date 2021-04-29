@@ -1,8 +1,10 @@
 package XMLCreator;
 
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,43 +21,43 @@ public class StaxParserDemo {
 
         while(reader.hasNext()){
             int event = reader.next();
-//
-//            switch(event){
-//                case XMLStreamConstants.START_ELEMENT:
-//                    if ("2-НДФЛ".equals(reader.getLocalName())){
-//
-//                        empList.add(reader.getAttributeValue(0));
-//                    }
-//                    if("employees".equals(reader.getLocalName())){
-//                        empList = new ArrayList<>();
-//                    }
-//                    break;
-//
-//                case XMLStreamConstants.CHARACTERS:
-//                    tagContent = reader.getText().trim();
-//                    break;
-//
-//                case XMLStreamConstants.END_ELEMENT:
-//                    switch(reader.getLocalName()){
-//                        case "employee":
-//                            empList.add(currEmp);
-//                            break;
-//                        case "firstName":
-//                            currEmp.firstName = tagContent;
-//                            break;
-//                        case "lastName":
-//                            currEmp.lastName = tagContent;
-//                            break;
-//                        case "location":
-//                            currEmp.location = tagContent;
-//                            break;
-//                    }
-//                    break;
-//
-//                case XMLStreamConstants.START_DOCUMENT:
-//                    empList = new ArrayList<>();
-//                    break;
-//            }
+
+            switch(event){
+                case XMLStreamConstants.START_ELEMENT:
+                    if ("2-НДФЛ".equals(reader.getLocalName())){
+
+                        empList.add(reader.getAttributeValue(0));
+                    }
+                    if("employees".equals(reader.getLocalName())){
+                        empList = new ArrayList<>();
+                    }
+                    break;
+
+                case XMLStreamConstants.CHARACTERS:
+                    tagContent = reader.getText().trim();
+                    break;
+
+                case XMLStreamConstants.END_ELEMENT:
+                    switch(reader.getLocalName()){
+                        case "employee":
+                            empList.add(currEmp);
+                            break;
+                        case "firstName":
+                            currEmp.firstName = tagContent;
+                            break;
+                        case "lastName":
+                            currEmp.lastName = tagContent;
+                            break;
+                        case "location":
+                            currEmp.location = tagContent;
+                            break;
+                    }
+                    break;
+
+                case XMLStreamConstants.START_DOCUMENT:
+                    empList = new ArrayList<>();
+                    break;
+           }
 
         }
 

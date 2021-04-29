@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class API_NDFL {
 
     public static final String BASE_URL = "https://app2report-ci02025377-dev-kapun.apps.test-ose.sigma.sbrf.ru/app2report/report";
+
     ClientRequest cl = new ClientRequest();
 
     public void returnClient() {
